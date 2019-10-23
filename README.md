@@ -1,7 +1,7 @@
 Laravel GitHub
 ==============
 
-Laravel GitHub was created by, and is maintained by [Graham Campbell](https://github.com/GrahamCampbell), and is a [PHP GitHub API](https://github.com/KnpLabs/php-github-api) bridge for [Laravel 5](http://laravel.com). It utilises my [Laravel Manager](https://github.com/GrahamCampbell/Laravel-Manager) package. Feel free to check out the [change log](CHANGELOG.md), [releases](https://github.com/GrahamCampbell/Laravel-GitHub/releases), [license](LICENSE), and [contribution guidelines](CONTRIBUTING.md).
+Laravel GitHub was created by, and is maintained by [Graham Campbell](https://github.com/GrahamCampbell), and is a [PHP GitHub API](https://github.com/KnpLabs/php-github-api) bridge for [Laravel 5](http://laravel.com). It utilises my [Laravel Manager](https://github.com/GrahamCampbell/Laravel-Manager) package. Feel free to check out the [change log](CHANGELOG.md), [releases](https://github.com/GrahamCampbell/Laravel-GitHub/releases), [security policy](https://github.com/GrahamCampbell/Laravel-GitHub/security/policy), [license](LICENSE), [code of conduct](.github/CODE_OF_CONDUCT.md), and [contribution guidelines](.github/CONTRIBUTING.md).
 
 ![Laravel GitHub](https://cloud.githubusercontent.com/assets/2829600/4432305/c14a3934-468c-11e4-8371-684e72291139.PNG)
 
@@ -17,12 +17,18 @@ Laravel GitHub was created by, and is maintained by [Graham Campbell](https://gi
 
 ## Installation
 
-Laravel GitHub requires [PHP](https://php.net) 7.1 or 7.2. This particular version supports Laravel 5.5 - 5.7 only.
+Laravel GitHub requires [PHP](https://php.net) 7.1-7.3. This particular version supports Laravel 5.5-5.8 and 6 only.
 
 To get the latest version, simply require the project using [Composer](https://getcomposer.org). You will need to install any package that "provides" `php-http/client-implementation`. Most users will want:
 
 ```bash
-$ composer require graham-campbell/github php-http/guzzle6-adapter
+$ composer require graham-campbell/github php-http/guzzle6-adapter:^1.1
+```
+
+If you'd like to use the private key authenticator, then you will also need to install `lcobucci/jwt`:
+
+```bash
+$ composer require lcobucci/jwt:^3.3
 ```
 
 Once installed, if you are not using automatic package discovery, then you need to register the `GrahamCampbell\GitHub\GitHubServiceProvider` service provider in your `config/app.php`.
@@ -152,9 +158,22 @@ There are other classes in this package that are not documented here. This is be
 
 ## Security
 
-If you discover a security vulnerability within this package, please send an e-mail to Graham Campbell at graham@alt-three.com. All security vulnerabilities will be promptly addressed.
+If you discover a security vulnerability within this package, please send an email to Graham Campbell at graham@alt-three.com. All security vulnerabilities will be promptly addressed. You may view our full security policy [here](https://github.com/GrahamCampbell/Laravel-GitHub/security/policy).
 
 
 ## License
 
 Laravel GitHub is licensed under [The MIT License (MIT)](LICENSE).
+
+
+---
+
+<div align="center">
+	<b>
+		<a href="https://tidelift.com/subscription/pkg/packagist-graham-campbell-github?utm_source=packagist-graham-campbell-github&utm_medium=referral&utm_campaign=readme">Get professional support for Laravel GitHub with a Tidelift subscription</a>
+	</b>
+	<br>
+	<sub>
+		Tidelift helps make open source sustainable for maintainers while giving companies<br>assurances about security, maintenance, and licensing for their dependencies.
+	</sub>
+</div>

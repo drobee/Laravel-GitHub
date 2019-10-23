@@ -2,6 +2,38 @@ CHANGE LOG
 ==========
 
 
+## V8.2 (26/08/2019)
+
+* Added Laravel 6 support
+
+
+## V8.1 (18/08/2019)
+
+* Work around Laravel caching bugs
+* Ensure cache TTLs aren't too large
+
+
+## V8.0 (30/06/2019)
+
+* Reworked caching
+* Avoid calling deprecated code
+
+
+## V7.8 (16/06/2019)
+
+* Added private key authenticator
+
+
+## V7.7 (07/04/2019)
+
+* Added Laravel 5.8 support
+
+
+## V7.6 (28/01/2019)
+
+* Require knplabs/github-api 2.11
+
+
 ## V7.5 (04/09/2018)
 
 * Support knplabs/github-api 2.10 too
