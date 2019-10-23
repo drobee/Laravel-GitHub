@@ -17,8 +17,11 @@ use GrahamCampbell\GitHub\Authenticators\ApplicationAuthenticator;
 use GrahamCampbell\GitHub\Authenticators\AuthenticatorFactory;
 use GrahamCampbell\GitHub\Authenticators\JwtAuthenticator;
 use GrahamCampbell\GitHub\Authenticators\PasswordAuthenticator;
+use GrahamCampbell\GitHub\Authenticators\PrivateKeyAuthenticator;
 use GrahamCampbell\GitHub\Authenticators\TokenAuthenticator;
 use GrahamCampbell\Tests\GitHub\AbstractTestCase;
+use InvalidArgumentException;
+use TypeError;
 
 /**
  * This is the authenticator factory test class.
@@ -63,25 +66,32 @@ class AuthenticatorFactoryTest extends AbstractTestCase
         $this->assertInstanceOf(TokenAuthenticator::class, $return);
     }
 
-    /**
-     * @expectedException InvalidArgumentException
-     * @expectedExceptionMessage Unsupported authentication method [foo].
-     */
+    public function testMakePrivateKeyAuthenticator()
+    {
+        $factory = $this->getFactory();
+
+        $return = $factory->make('private');
+
+        $this->assertInstanceOf(PrivateKeyAuthenticator::class, $return);
+    }
+
     public function testMakeInvalidAuthenticator()
     {
         $factory = $this->getFactory();
 
-        $return = $factory->make('foo');
+        $this->expectException(InvalidArgumentException::class);
+        $this->expectExceptionMessage('Unsupported authentication method [foo].');
+
+        $factory->make('foo');
     }
 
-    /**
-     * @expectedException TypeError
-     */
     public function testMakeNoAuthenticator()
     {
         $factory = $this->getFactory();
 
-        $return = $factory->make(null);
+        $this->expectException(TypeError::class);
+
+        $factory->make(null);
     }
 
     protected function getFactory()
